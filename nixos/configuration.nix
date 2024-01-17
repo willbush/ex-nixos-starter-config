@@ -41,9 +41,12 @@
   users.mutableUsers = false;
 
   users.users = {
+
+    # password: temp a
+    root.initialHashedPassword = "$6$FRmKgElD/80xQiXn$aF.tKv0VOLj9D3aUJjoYsj3AzSj1rq5fVooE7tgtNuTawt8ZWgaRyUUxsikX5whbna4jrzXrDZmVFqik.kyc2/";
     will = {
-      # password: temp
-      initialHashedPassword = "$6$mVQOWQToV2qqW37n$f5nDwd/Bm3J9DaV5dFINgMgNidhZ.PCjQVnDDzboOcUwAESquZQ08aEJKDgpmjkbXSBEEcjytZNij1qUINbq71";
+      # password: temp b
+      initialHashedPassword = "$6$iLmo7C9VoAnJZ6v1$qCSORkbiY44IbcrrF1DcTnJtpOkqeD2tGgUoaDgtzPdFqKWKJ28AhJqmuOf8IWoSNu2DQJM.QlWO1Ok05kFgp0";
       isNormalUser = true;
       extraGroups = [ "wheel" ];
     };
