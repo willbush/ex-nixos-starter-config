@@ -27,8 +27,16 @@
   };
 
   networking.hostName = "blitzar";
+  networking.networkmanager.enable = true;
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  time.timeZone = "America/Chicago";
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   users.mutableUsers = false;
 
