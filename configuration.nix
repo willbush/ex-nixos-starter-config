@@ -8,6 +8,7 @@
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
   nix.nixPath = [ "/etc/nix/path" ];
+
   environment.etc =
     lib.mapAttrs'
       (name: value: {
@@ -15,6 +16,11 @@
         value.source = value.flake;
       })
       config.nix.registry;
+
+  # machine-id is used by systemd for the journal, if you don't persist this
+  # file you won't be able to easily use journalctl to look at journals for
+  # previous boots.
+  environment.etc."machine-id".source = "/nix/persist/etc/machine-id";
 
   nix.settings = {
     experimental-features = "nix-command flakes";
