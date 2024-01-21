@@ -1,9 +1,4 @@
-{ inputs
-, lib
-, config
-, pkgs
-, ...
-}: {
+{ inputs, lib, config, pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   # This will add each flake input as a registry
@@ -41,9 +36,9 @@
   users.mutableUsers = false;
 
   users.users = {
-
     # password: temp a
     root.initialHashedPassword = "$6$FRmKgElD/80xQiXn$aF.tKv0VOLj9D3aUJjoYsj3AzSj1rq5fVooE7tgtNuTawt8ZWgaRyUUxsikX5whbna4jrzXrDZmVFqik.kyc2/";
+
     will = {
       # password: temp b
       initialHashedPassword = "$6$iLmo7C9VoAnJZ6v1$qCSORkbiY44IbcrrF1DcTnJtpOkqeD2tGgUoaDgtzPdFqKWKJ28AhJqmuOf8IWoSNu2DQJM.QlWO1Ok05kFgp0";

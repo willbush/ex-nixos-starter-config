@@ -1,48 +1,29 @@
 {
-  description = "Your new nix config";
+  description = "An example of a configured misterio77/nix-starter-config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , ...
-    } @ inputs:
-    let
-      inherit (self) outputs;
-    in
-    {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#blitzar'
-      nixosConfigurations = {
-        blitzar = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          # > Our main nixos configuration file <
-          modules = [ ./nixos/configuration.nix ];
-        };
-      };
+  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+    nixosConfigurations = {
+      hostname = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.will = import ./home.nix;
 
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@blitzar'
-      homeConfigurations = {
-        "will@blitzar" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          # > Our main home-manager configuration file <
-          modules = [ ./home-manager/home.nix ];
-        };
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
       };
     };
+  };
 }
