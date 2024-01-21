@@ -42,8 +42,9 @@
     will = {
       # password: temp b
       initialHashedPassword = "$6$iLmo7C9VoAnJZ6v1$qCSORkbiY44IbcrrF1DcTnJtpOkqeD2tGgUoaDgtzPdFqKWKJ28AhJqmuOf8IWoSNu2DQJM.QlWO1Ok05kFgp0";
-      isNormalUser = true;
       extraGroups = [ "wheel" ];
+      isNormalUser = true;
+      shell = pkgs.zsh;
     };
   };
 
