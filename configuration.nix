@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   # This will add each flake input as a registry
