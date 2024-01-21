@@ -50,6 +50,14 @@
 
   programs.zsh.enable = true;
 
+  fonts.packages = with pkgs; [
+    fira-mono
+    hack-font
+    inconsolata
+    iosevka
+    nerdfonts
+  ];
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }
