@@ -1,5 +1,8 @@
 { inputs, pkgs, lib, config, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./persist.nix
+  ];
 
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
@@ -16,11 +19,6 @@
         value.source = value.flake;
       })
       config.nix.registry;
-
-  # machine-id is used by systemd for the journal, if you don't persist this
-  # file you won't be able to easily use journalctl to look at journals for
-  # previous boots.
-  environment.etc."machine-id".source = "/nix/persist/etc/machine-id";
 
   nix.settings = {
     experimental-features = "nix-command flakes";
