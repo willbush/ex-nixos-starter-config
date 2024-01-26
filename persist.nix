@@ -22,8 +22,9 @@
         "Downloads"
       ];
       files = [
-        ".zsh_history"
         ".bash_history"
+        ".config/systemsettingsrc"
+        ".zsh_history"
       ];
     };
   };
