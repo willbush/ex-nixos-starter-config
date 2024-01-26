@@ -17,6 +17,10 @@
       directories = [
         "Downloads"
       ];
+      files = [
+        ".zsh_history"
+        ".bash_history"
+      ];
     };
   };
 }
