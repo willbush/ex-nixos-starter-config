@@ -24,6 +24,11 @@
       enable = true;
       extraConfig = builtins.readFile ./nvim/init.vim;
     };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
   # Nicely reload system units when changing configs
