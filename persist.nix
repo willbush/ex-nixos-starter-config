@@ -15,6 +15,10 @@
     ];
     users.will = {
       directories = [
+        ".local/share/kscreen"
+        ".local/share/kwalletd"
+        ".local/share/sddm"
+        ".local/share/zoxide"
         "Downloads"
       ];
       files = [
